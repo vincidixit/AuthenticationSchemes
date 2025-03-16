@@ -7,6 +7,7 @@
 
 <form asp-action="Login" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" name="ReturnUrl" value="@ViewData["ReturnUrl"]">
     <div class="form-group">
         <label asp-for="Username"></label>
         <input asp-for="Username" class="form-control" />

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using CookieAuthScheme.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CookieAuthScheme.Controllers;
 
@@ -27,5 +28,12 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    [HttpGet]
+    [Authorize("AdminPolicy")]
+    public IActionResult Admin()
+    {
+        return View();
     }
 }
